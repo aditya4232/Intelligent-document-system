@@ -17,7 +17,7 @@ import { useSettings } from '../hooks/useSettings'
 import styles from './ChatPage.module.css'
 import heroBg from '../../_ai_document_1080p_202602220846-ezgif.com-video-to-webp-converter.webp'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? 'https://klecherop-documind-api.hf.space'
+const API_BASE = import.meta.env.VITE_API_URL || 'https://klecherop-documind-api.hf.space'
 const DOCS_API_KEY = import.meta.env.VITE_DOCS_API_KEY
 
 const QUICK_QUESTIONS = [

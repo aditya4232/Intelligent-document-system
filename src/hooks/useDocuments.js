@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8000'
+const API_BASE = import.meta.env.VITE_API_URL || 'https://klecherop-documind-api.hf.space'
 const DOCS_API_KEY = import.meta.env.VITE_DOCS_API_KEY
 
 const ALLOWED_EXTENSIONS = /\.(txt)$/i
