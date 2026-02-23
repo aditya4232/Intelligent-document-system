@@ -8,10 +8,21 @@ const ALLOWED_EXTENSIONS = /\.(txt)$/i
 const ALLOWED_TYPES = ['text/plain']
 
 function fileLabel(name) {
-  return name
+  // Strip session prefix if it exists
+  const cleanName = name.replace(/^SESSION_[a-z0-9]+_\d+_/i, '')
+  return cleanName
     .replace(/\.[^.]+$/, '')
     .replace(/[_-]+/g, ' ')
     .replace(/\b\w/g, c => c.toUpperCase())
+}
+
+function getSessionId() {
+  let sid = localStorage.getItem('documind_session_id')
+  if (!sid) {
+    sid = Math.random().toString(36).substring(2, 10)
+    localStorage.setItem('documind_session_id', sid)
+  }
+  return sid
 }
 
 /**
@@ -27,15 +38,37 @@ export function useDocuments() {
       timeout: 10000,
       headers: DOCS_API_KEY ? { 'X-API-Key': DOCS_API_KEY } : undefined,
     })
-    const names = Array.isArray(data?.documents) ? data.documents : []
+    
+    const sessionId = getSessionId()
+    const now = Date.now()
+    const TWO_HOURS = 2 * 60 * 60 * 1000
+
+    const allNames = Array.isArray(data?.documents) ? data.documents : []
+    const visibleNames = allNames.filter(name => {
+      if (name.startsWith('SESSION_')) {
+        const parts = name.split('_')
+        const docSessionId = parts[1]
+        const docTimestamp = parseInt(parts[2], 10)
+        
+        // Hide if from another device/session
+        if (docSessionId !== sessionId) return false
+        
+        // Hide if expired (older than 2 hours)
+        if (now - docTimestamp > TWO_HOURS) return false
+        
+        return true
+      }
+      return true
+    })
+
     setDocs(prev => {
       const lockState = new Map(prev.map(d => [d.name, d.locked]))
-      return names.map((name, index) => ({
+      return visibleNames.map((name, index) => ({
         id: `doc_${name}`,
         name,
         label: fileLabel(name),
         type: (name.split('.').pop() ?? '').toLowerCase(),
-        builtin: true,
+        builtin: !name.startsWith('SESSION_'),
         locked: lockState.get(name) ?? index < 2,
       }))
     })
@@ -67,8 +100,14 @@ export function useDocuments() {
     )
     if (!arr.length) return
 
+    const sessionId = getSessionId()
+    const timestamp = Date.now()
+    
     const form = new FormData()
-    arr.forEach(file => form.append('files', file))
+    arr.forEach(file => {
+      const modifiedName = `SESSION_${sessionId}_${timestamp}_${file.name}`
+      form.append('files', new File([file], modifiedName, { type: file.type }))
+    })
 
     await axios.post(`${API_BASE}/documents/upload`, form, {
       headers: DOCS_API_KEY ? { 'X-API-Key': DOCS_API_KEY } : undefined,
