@@ -2,15 +2,15 @@ name: Deploy Frontend to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths:
-      - 'src/**'
-      - 'public/**'
-      - 'index.html'
-      - 'package.json'
-      - 'vite.config.js'
-      - '.github/workflows/deploy.yml'
-  workflow_dispatch:          # allow manual trigger from GitHub UI
+      - "src/**"
+      - "public/**"
+      - "index.html"
+      - "package.json"
+      - "vite.config.js"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch: # allow manual trigger from GitHub UI
 
 # Grant GITHUB_TOKEN write access to deploy to gh-pages branch
 permissions:
@@ -35,8 +35,8 @@ jobs:
       - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       # ── 3. Install dependencies ───────────────────────────────────────────────
       - name: Install dependencies
@@ -66,6 +66,6 @@ jobs:
           publish_dir: ./dist
           publish_branch: gh-pages
           force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'chore(deploy): ${{ github.sha }}'
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "chore(deploy): ${{ github.sha }}"
