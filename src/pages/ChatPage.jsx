@@ -158,23 +158,9 @@ export default function ChatPage() {
   const clearChat = () => { setMessages(m => [m[0]]); setQueryCount(0) }
 
   const openDocViewer = useCallback(async (doc) => {
-    setDocViewerOpen(true)
-    setDocViewerName(doc.name)
-    setDocViewerContent('')
-    setDocViewerError('')
-    setDocViewerLoading(true)
-    try {
-      const { data } = await axios.get(`${API_BASE}/documents/content`, {
-        params: { name: doc.name },
-        headers: DOCS_API_KEY ? { 'X-API-Key': DOCS_API_KEY } : undefined,
-        timeout: 20000,
-      })
-      setDocViewerContent(data?.content ?? '')
-    } catch (err) {
-      setDocViewerError(err.response?.data?.detail ?? 'Unable to load file content')
-    } finally {
-      setDocViewerLoading(false)
-    }
+    // Open documents using their native browser/OS opener
+    const url = `${API_BASE}/documents/file?name=${encodeURIComponent(doc.name)}${DOCS_API_KEY ? `&key=${encodeURIComponent(DOCS_API_KEY)}` : ''}`
+    window.open(url, '_blank')
   }, [])
 
   /* ─── Render ─────────────────────────────────────────────────────── */
@@ -288,7 +274,7 @@ export default function ChatPage() {
                     </li>
                   )}
                   {filteredDocs.map(d => (
-                    <li key={d.id} className={`${styles.docItem} ${d.locked ? styles.docItemLocked : ''}`}>
+                    <li key={d.id} className={`${styles.docItem} ${d.locked ? styles.docItemLocked : ''} ${!d.builtin ? styles.docItemUser : ''}`}>
                       <button
                         className={`${styles.lockBtn} ${d.locked ? styles.lockBtnOn : ''}`}
                         onClick={() => toggleLock(d.id)}
@@ -299,7 +285,10 @@ export default function ChatPage() {
                       <DocTypeIcon name={d.name} size={13} />
                       <div className={styles.docMeta}>
                         <span className={styles.docLabel}>{d.label}</span>
-                        {d.sizeLabel && <span className={styles.docSize}>{d.sizeLabel}</span>}
+                        <div className={styles.docTags}>
+                           {d.builtin ? <span className={styles.docBadgeExample}>Example</span> : <span className={styles.docBadgeUser}>Your File</span>}
+                           {d.sizeLabel && <span className={styles.docSize}>{d.sizeLabel}</span>}
+                        </div>
                       </div>
                       <button className={styles.viewBtn} onClick={() => openDocViewer(d)} title="View file">
                         <Eye size={11} />

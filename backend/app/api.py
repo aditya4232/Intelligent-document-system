@@ -2,6 +2,7 @@ import os
 import tempfile
 from pathlib import Path
 from fastapi import APIRouter, File, Header, HTTPException, Query, UploadFile
+from fastapi.responses import FileResponse
 from fastapi.concurrency import run_in_threadpool
 from app.schemas import AskRequest, AskResponse
 from app.retriever import retrieve
@@ -65,6 +66,16 @@ def create_routes(vector_store):
             "name": file_path.name,
             "content": content,
         }
+
+    @router.get("/documents/file")
+    async def document_file(
+        name: str = Query(..., min_length=1),
+        x_api_key: str | None = Header(default=None, alias="X-API-Key"),
+        key: str | None = Query(default=None),
+    ):
+        check_docs_access(x_api_key or key)
+        file_path = safe_doc_path(name)
+        return FileResponse(file_path)
 
     @router.post("/documents/upload")
     async def upload_documents(

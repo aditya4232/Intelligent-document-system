@@ -4,8 +4,8 @@ import axios from 'axios'
 const API_BASE = import.meta.env.VITE_API_URL || 'https://klecherop-documind-api.hf.space'
 const DOCS_API_KEY = import.meta.env.VITE_DOCS_API_KEY
 
-const ALLOWED_EXTENSIONS = /\.(txt)$/i
-const ALLOWED_TYPES = ['text/plain']
+const ALLOWED_EXTENSIONS = /\.(txt|pdf|docx)$/i
+const ALLOWED_TYPES = ['text/plain', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 
 function fileLabel(name) {
   // Strip session prefix if it exists
