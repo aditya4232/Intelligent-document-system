@@ -49,8 +49,15 @@ export default function LandingPage() {
   const [scrolled,     setScrolled]     = useState(false)
   const [statsVisible, setStatsVisible] = useState(false)
   const [footerVisible,setFooterVisible]= useState(false)
+  const [isMobile, setIsMobile]         = useState(window.innerWidth < 768)
   const statsRef  = useRef(null)
   const footerRef = useRef(null)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener("resize", handleResize, { passive: true })
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80)
@@ -99,8 +106,9 @@ export default function LandingPage() {
   }, [])
 
   const handleMouseMove = useCallback((e) => {
+    if (isMobile) return; // Disable expensive mouse tracking on mobile
     setMouse({ x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight })
-  }, [])
+  }, [isMobile])
 
   const scrollTo = (href) => {
     if (href.startsWith("#")) {
@@ -118,14 +126,14 @@ export default function LandingPage() {
       <NeuralBackground
         style={{ position: "fixed", zIndex: 0 }}
         color="#818cf8"
-        trailOpacity={0.07}
-        particleCount={400}
+        trailOpacity={isMobile ? 0.05 : 0.07}
+        particleCount={isMobile ? 80 : 400}
         speed={0.6}
       />
 
       {/* ── Orbs ──────────────────────────────────────────────────── */}
-      <div className={styles.orb1} style={{ transform: `translate(${mouse.x * 50 - 25}px, ${mouse.y * 50 - 25}px)` }} />
-      <div className={styles.orb2} style={{ transform: `translate(${mouse.x * -35 + 17}px, ${mouse.y * -35 + 17}px)` }} />
+      <div className={styles.orb1} style={{ transform: isMobile ? 'none' : `translate(${mouse.x * 50 - 25}px, ${mouse.y * 50 - 25}px)` }} />
+      <div className={styles.orb2} style={{ transform: isMobile ? 'none' : `translate(${mouse.x * -35 + 17}px, ${mouse.y * -35 + 17}px)` }} />
       <div className={styles.orb3} />
 
       {/* ══ NAVBAR ═══════════════════════════════════════════════════ */}
@@ -165,7 +173,7 @@ export default function LandingPage() {
       {/* ══ HERO ════════════════════════════════════════════════════════ */}
       <section className={styles.hero}>
         <div className={styles.videoBg}>
-          <img src={heroBg} alt="" className={styles.heroBgImg} loading="eager" decoding="async" aria-hidden="true" />
+          {!isMobile && <img src={heroBg} alt="" className={styles.heroBgImg} loading="eager" decoding="async" aria-hidden="true" />}
           <div className={styles.videoOverlay} />
           <div className={styles.heroGrid} />
         </div>
@@ -178,7 +186,7 @@ export default function LandingPage() {
                 <span className={styles.liveDot} />
                 Live in production
               </span>
-              <span className={styles.heroTagPill}>�🇳 IN IT Consulting</span>
+              <span className={styles.heroTagPill}>🇮🇳 IN IT Consulting</span>
               <span className={styles.heroTagPill}>PDPA Compliant</span>
             </div>
 
@@ -253,7 +261,7 @@ export default function LandingPage() {
                   <span className={styles.termBadgePurple}>compliance_policy.txt</span>
                 </div>
                 <div className={styles.termPreview}>
-                  <img src={whiskBg} alt="Document visualisation" className={styles.termPreviewImg} loading="lazy" decoding="async" />
+                  {!isMobile && <img src={whiskBg} alt="Document visualisation" className={styles.termPreviewImg} loading="lazy" decoding="async" />}
                   <div className={styles.termPreviewOverlay}>
                     <span className={styles.termPreviewLabel}>Knowledge Base Active</span>
                     <span className={styles.termPreviewSub}>5 documents indexed · ChromaDB</span>
