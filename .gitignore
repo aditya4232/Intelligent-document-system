@@ -1,0 +1,116 @@
+# ──────────────────────────────────────────────────────────────
+# Node / Frontend
+# ──────────────────────────────────────────────────────────────
+node_modules/
+dist/
+dist-ssr/
+.cache/
+.parcel-cache/
+*.local
+
+# Vite
+.vite/
+
+# Environment files — never commit secrets
+.env
+.env.local
+.env.*.local
+# Keep examples in the repo
+!.env.example
+!backend/.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ──────────────────────────────────────────────────────────────
+# Python / Backend
+# ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Python build artifacts
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+MANIFEST
+
+# Type checking / linting
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.dmypy.json
+
+# pytest
+.pytest_cache/
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+*.cover
+
+# ──────────────────────────────────────────────────────────────
+# IDE / OS
+# ──────────────────────────────────────────────────────────────
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ──────────────────────────────────────────────────────────────
+# Project-specific
+# ──────────────────────────────────────────────────────────────
+# Large media assets — tracked via Git LFS or CDN instead
+*.mp4
+*.webm
+*.mov
+*.avi
+*.mkv
+*.webp
+
+# FAISS index (rebuilt at runtime from data/ folder)
+*.faiss
+*.index
+
+# Sentence-Transformers model cache
+sentence_transformers/
+.cache/huggingface/
+
+# Old / messy backend folder (replaced by backend/)
+Intelligent document system - backend/

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>DocuMind IN</title>
+    <script>
+      /*
+       * GitHub Pages SPA redirect — single-page apps on GitHub Pages
+       * https://github.com/rafgraph/spa-github-pages
+       *
+       * This script takes the current URL and converts the path and query
+       * string into just a query string, then redirects back to the root
+       * index.html. The redirect script in index.html will read the query
+       * string and convert it back to the proper URL before React Router
+       * takes over.
+       *
+       * pathSegmentsToKeep = 1  → keeps one path segment (the repo name)
+       */
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname
+            .split('/')
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join('/') +
+          '/?/' +
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(pathSegmentsToKeep)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search
+            ? '&' + l.search.slice(1).replace(/&/g, '~and~')
+            : '') +
+          l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,13 @@
+# Q&A Input Examples for Document Intelligence System
+# Questions only
+
+"What documents must be collected before placement?"
+"Which industry does Client X belong to?"
+"What is the client budget range for Python developers?"
+"How many years of SQL experience are required?"
+"Is background verification mandatory for Client X?"
+"What is the notice period policy?"
+"What is the rate range for Python developer 3-5 years?"
+"What happens if a candidate fails background verification?"
+"What is the minimum experience required for Python developer?"
+

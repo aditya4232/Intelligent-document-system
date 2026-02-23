@@ -1,0 +1,14 @@
+Client: Client X
+Industry: Fintech
+Location: Remote
+
+Mandatory Documents:
+- Updated Resume
+- Government ID Proof
+- Last 6 months payslips
+
+Minimum Experience:
+- Python: 3+ years
+- Fintech: 1+ year
+
+Background verification is mandatory.

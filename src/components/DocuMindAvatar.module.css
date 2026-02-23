@@ -1,0 +1,133 @@
+/* ── DocuMindAvatar ─────────────────────────────────────────────────── */
+
+.wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Conic-gradient spinning ring */
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #6366f1 0deg,
+    #06b6d4 120deg,
+    #a855f7 240deg,
+    #6366f1 360deg
+  );
+  animation: spinRing 3s linear infinite;
+  opacity: 0.85;
+}
+.ring::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: #060d1a;
+}
+
+/* Soft ambient glow */
+.glow {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%);
+  animation: pulseGlow 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Face sits on top of ring+glow */
+.face {
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Antenna dot pulse */
+.antennaDot {
+  animation: antennaPulse 2s ease-in-out infinite;
+}
+
+/* Eye blink — staggered */
+.eyeLeft {
+  animation: blink 4s ease-in-out infinite;
+}
+.eyeRight {
+  animation: blink 4s ease-in-out 0.15s infinite;
+}
+
+/* Mouth animate */
+.mouth {
+  animation: mouthTalk 3s ease-in-out infinite;
+}
+
+/* Spark dot orbits */
+.sparkDot {
+  animation: sparkOrbit 2.8s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+/* "Thinking" state — faster ring + brighter glow */
+.thinking .ring {
+  animation: spinRing 0.9s linear infinite;
+  opacity: 1;
+}
+.thinking .glow {
+  animation: pulseGlow 0.8s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(99,102,241,0.55) 0%, transparent 70%);
+}
+.thinking .eyeLeft,
+.thinking .eyeRight {
+  animation: thinkingEye 0.6s ease-in-out infinite alternate;
+}
+
+/* ── Keyframes ──────────────────────────────────────────────────────── */
+
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.12); }
+}
+
+@keyframes antennaPulse {
+  0%, 100% { opacity: 1;    r: 2.4; }
+  50%       { opacity: 0.4; r: 3.2; }
+}
+
+@keyframes blink {
+  0%, 90%, 100%  { ry: 10%; }
+  92%, 97%       { ry: 1%;  }
+}
+
+@keyframes mouthTalk {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+
+@keyframes sparkOrbit {
+  0%, 100% { opacity: 0.9; transform: translateY(0); }
+  50%      { opacity: 0.3; transform: translateY(-2px) scale(0.7); }
+}
+
+@keyframes thinkingEye {
+  from { opacity: 1; }
+  to   { opacity: 0.2; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ring, .glow, .antennaDot,
+  .eyeLeft, .eyeRight, .mouth, .sparkDot {
+    animation: none;
+  }
+}
