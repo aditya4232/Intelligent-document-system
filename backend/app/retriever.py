@@ -15,7 +15,14 @@ def retrieve(
     if source_filter:
         filter_set = set(source_filter)
         filtered = [r for r in results if r["source"] in filter_set]
-        # Fall back to unfiltered if nothing matched (doc not yet ingested)
+        # Intentional graceful degradation:
+        # If none of the locked documents matched (e.g. the file was uploaded
+        # in the UI but not yet ingested into the vector store), we fall back
+        # to the full result set rather than silently returning an empty list,
+        # which would appear to the user as "no information found" even though
+        # relevant context exists in other documents.
+        # The UI already shows source citations, so the user can see the actual
+        # sources used in the answer.
         results = filtered if filtered else results
 
     return results

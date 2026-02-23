@@ -4,7 +4,7 @@ import axios from 'axios'
 import {
   Menu, Send, Upload, FileText, File, Lock, LockOpen,
   Trash2, ArrowLeft, Settings2, ChevronDown, MessageSquare,
-  FolderOpen, X, Pin, ExternalLink, CheckSquare, Square, Search,
+  FolderOpen, X, Pin, ExternalLink, CheckSquare, Square, Search, Eye,
   Shield, SlidersHorizontal, Cpu,
 } from 'lucide-react'
 import ChatMessage from '../components/ChatMessage'
@@ -18,6 +18,7 @@ import styles from './ChatPage.module.css'
 import heroBg from '../../_ai_document_1080p_202602220846-ezgif.com-video-to-webp-converter.webp'
 
 const API_BASE = import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8000'
+const DOCS_API_KEY = import.meta.env.VITE_DOCS_API_KEY
 
 const QUICK_QUESTIONS = [
   'What is the PF and ESIC compliance status for this contractor?',
@@ -56,12 +57,17 @@ export default function ChatPage() {
   const [temperature, setTemperature]   = useState(0.7)
   const [dragOver, setDragOver]         = useState(false)
   const [docSearch, setDocSearch]       = useState('')
+  const [docViewerOpen, setDocViewerOpen] = useState(false)
+  const [docViewerName, setDocViewerName] = useState('')
+  const [docViewerContent, setDocViewerContent] = useState('')
+  const [docViewerLoading, setDocViewerLoading] = useState(false)
+  const [docViewerError, setDocViewerError] = useState('')
   const messagesEndRef                  = useRef(null)
   const inputRef                        = useRef(null)
   const uploadRef                       = useRef(null)
 
   /* ─── Document library (extracted to custom hook) ────────────────── */
-  const { docs, lockedDocs, toggleLock, removeUploadedDoc, selectAll, deselectAll, handleFiles } = useDocuments()
+  const { docs, lockedDocs, toggleLock, removeDocument, selectAll, deselectAll, handleFiles } = useDocuments()
 
   /* ─── Inference / pipeline settings (extracted to custom hook) ───── */
   const {
@@ -151,6 +157,26 @@ export default function ChatPage() {
 
   const clearChat = () => { setMessages(m => [m[0]]); setQueryCount(0) }
 
+  const openDocViewer = useCallback(async (doc) => {
+    setDocViewerOpen(true)
+    setDocViewerName(doc.name)
+    setDocViewerContent('')
+    setDocViewerError('')
+    setDocViewerLoading(true)
+    try {
+      const { data } = await axios.get(`${API_BASE}/documents/content`, {
+        params: { name: doc.name },
+        headers: DOCS_API_KEY ? { 'X-API-Key': DOCS_API_KEY } : undefined,
+        timeout: 20000,
+      })
+      setDocViewerContent(data?.content ?? '')
+    } catch (err) {
+      setDocViewerError(err.response?.data?.detail ?? 'Unable to load file content')
+    } finally {
+      setDocViewerLoading(false)
+    }
+  }, [])
+
   /* ─── Render ─────────────────────────────────────────────────────── */
   return (
     <div className={styles.page}>
@@ -213,7 +239,7 @@ export default function ChatPage() {
                 >
                   <input
                     ref={uploadRef} type="file"
-                    accept=".txt,.pdf,.doc,.docx"
+                    accept=".txt,.pdf,.docx"
                     multiple style={{ display: 'none' }}
                     onChange={e => handleFiles(e.target.files)}
                   />
@@ -275,8 +301,11 @@ export default function ChatPage() {
                         <span className={styles.docLabel}>{d.label}</span>
                         {d.sizeLabel && <span className={styles.docSize}>{d.sizeLabel}</span>}
                       </div>
+                      <button className={styles.viewBtn} onClick={() => openDocViewer(d)} title="View file">
+                        <Eye size={11} />
+                      </button>
                       {!d.builtin && (
-                        <button className={styles.removeBtn} onClick={() => removeUploadedDoc(d.id)} title="Remove">
+                        <button className={styles.removeBtn} onClick={() => removeDocument(d.id)} title="Remove">
                           <X size={11} />
                         </button>
                       )}
@@ -423,9 +452,8 @@ export default function ChatPage() {
                   <div className={styles.sliderBlock}>
                     <div className={styles.sliderHeader}><span>Embedding model</span></div>
                     <select className={styles.sgSelect} value={embeddingModel} onChange={e => setEmbeddingModel(e.target.value)}>
-                      <option value="nomic-v1.5">Nomic Embed v1.5</option>
-                      <option value="all-minilm-l6">all-MiniLM-L6-v2</option>
-                      <option value="bge-small">BGE-Small-EN</option>
+                      <option value="MiniLM-L6">MiniLM-L6 · Fast (384d)</option>
+                      <option value="MPNet-Base">MPNet-Base · Accurate (768d)</option>
                     </select>
                   </div>
                   <div className={styles.statsRow}>
@@ -552,6 +580,26 @@ export default function ChatPage() {
 
         </main>
       </div>
+
+      {docViewerOpen && (
+        <div className={styles.docViewerBackdrop} onClick={() => setDocViewerOpen(false)}>
+          <div className={styles.docViewerModal} onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Document viewer">
+            <div className={styles.docViewerHeader}>
+              <span className={styles.docViewerTitle}>{docViewerName}</span>
+              <button className={styles.docViewerClose} onClick={() => setDocViewerOpen(false)} aria-label="Close viewer">
+                <X size={14} />
+              </button>
+            </div>
+            <div className={styles.docViewerBody}>
+              {docViewerLoading && <p className={styles.docViewerState}>Loading file…</p>}
+              {!docViewerLoading && docViewerError && <p className={styles.docViewerError}>{docViewerError}</p>}
+              {!docViewerLoading && !docViewerError && (
+                <pre className={styles.docViewerText}>{docViewerContent || 'No content available.'}</pre>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

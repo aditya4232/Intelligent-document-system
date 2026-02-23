@@ -323,6 +323,18 @@
 .docItem:hover .removeBtn { opacity: 1; }
 .removeBtn:hover { background: rgba(248,113,113,0.12); color: #f87171; }
 
+.viewBtn {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 4px; border: none;
+  background: transparent; color: #64748b;
+  cursor: pointer; opacity: 0;
+  transition: all 0.15s;
+}
+.docItem:hover .viewBtn { opacity: 1; }
+.viewBtn:hover { background: rgba(99,102,241,0.16); color: #a5b4fc; }
+
 .noLock {
   display: flex; align-items: center; gap: 0.35rem;
   margin-top: 0.75rem;
@@ -332,6 +344,92 @@
   background: rgba(251,191,36,0.05);
   border: 1px solid rgba(251,191,36,0.12);
   color: #ca8a04;
+}
+
+.docViewerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(3, 8, 20, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.docViewerModal {
+  width: min(900px, 95vw);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(9, 16, 36, 0.96);
+  border: 1px solid rgba(99,102,241,0.28);
+  border-radius: 0.8rem;
+  box-shadow: 0 10px 40px rgba(2, 6, 23, 0.55);
+  overflow: hidden;
+}
+
+.docViewerHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid rgba(99,102,241,0.2);
+  background: rgba(99,102,241,0.08);
+}
+
+.docViewerTitle {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.docViewerClose {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(148,163,184,0.2);
+  background: transparent;
+  color: #94a3b8;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.docViewerClose:hover {
+  color: #cbd5e1;
+  border-color: rgba(148,163,184,0.38);
+}
+
+.docViewerBody {
+  flex: 1;
+  overflow: auto;
+  padding: 0.9rem;
+}
+
+.docViewerState,
+.docViewerError {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.docViewerState { color: #94a3b8; }
+.docViewerError { color: #f87171; }
+
+.docViewerText {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #dbe6f7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 /* ── Chat tab ─────────────────────────────────────────────────────── */

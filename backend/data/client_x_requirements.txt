@@ -1,14 +1,55 @@
-Client: Client X
-Industry: Fintech
-Location: Remote
+Client X — Engagement Requirements
+Client: [Redacted — Large-Cap Indian IT Services]
+Engagement Type: Staff Augmentation
+Effective: Q4 FY 2025-26
 
-Mandatory Documents:
-- Updated Resume
-- Government ID Proof
-- Last 6 months payslips
+1. General Requirements
 
-Minimum Experience:
-- Python: 3+ years
-- Fintech: 1+ year
+- All resources must have a minimum of 3 years of relevant experience
+- Maximum notice period: 30 days (negotiable to 45 with client approval)
+- Resources must be available for a minimum engagement of 6 months
+- Work location: Hyderabad or Bangalore (hybrid — 3 days in-office)
+- Shift timing: 10:00 AM to 7:00 PM IST (no night shifts for this engagement)
 
-Background verification is mandatory.
+2. Technology Stack — Mandatory
+
+  Backend: Java 17+ or Python 3.10+
+  Frontend: React 18+ or Angular 15+
+  Database: PostgreSQL 14+ and Redis
+  Cloud: AWS (EC2, S3, Lambda, RDS, CloudWatch)
+  CI/CD: Jenkins or GitHub Actions
+  Containerisation: Docker, Kubernetes (EKS)
+  Monitoring: Grafana, Prometheus
+
+3. Pre-Onboarding Checklist
+
+  [ ] BGV clearance (must be completed before Day 1)
+  [ ] NDA signed by the consultant
+  [ ] Client-specific code of conduct acknowledgment
+  [ ] Laptop provisioned with client-approved SOE image
+  [ ] VPN access request submitted (takes 3-5 working days)
+  [ ] Client email ID creation request
+  [ ] JIRA/Confluence access provisioning
+  [ ] Introduction call with the client delivery manager
+
+4. Billing Terms
+
+  - Billing model: Time & Material
+  - Invoice cycle: Monthly, submitted by 5th of following month
+  - Payment terms: Net 30 days from invoice date
+  - Leave deduction: Pro-rated for absences exceeding 2 days/month
+  - Public holidays: Follow the client's holiday calendar (12 holidays/year)
+
+5. Escalation Matrix
+
+  Level 1: Account Manager — response within 4 hours
+  Level 2: Delivery Head — response within 8 hours
+  Level 3: VP Client Relations — response within 24 hours
+
+6. Exit Process
+
+  - Minimum 15 working days notice to the client
+  - Knowledge transfer documentation mandatory
+  - Return of all client assets (laptop, badges, access cards)
+  - Exit clearance from client IT security team
+  - Final billing reconciliation within 10 working days

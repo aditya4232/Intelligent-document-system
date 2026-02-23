@@ -1,6 +1,52 @@
-Screening Checklist - Python Developer
+Screening Checklist — Python Developer
+Version: 2.0 | Updated: January 2026
 
-- Python minimum 3 years experience
-- SQL minimum 2 years
-- Fintech domain minimum 1 year
-- Good communication skills
+This checklist is used by the screening team to evaluate Python developer candidates
+before forwarding profiles to the client engagement team.
+
+1. Mandatory Technical Requirements
+
+  [ ] Python — minimum 3 years of hands-on development experience
+  [ ] SQL — minimum 2 years (PostgreSQL or MySQL preferred)
+  [ ] Git — proficiency with branching, pull requests and code review workflows
+  [ ] REST API development — experience with Flask, Django or FastAPI
+  [ ] Unit testing — pytest or unittest; must demonstrate TDD awareness
+
+2. Domain Experience (at least one required)
+
+  [ ] Fintech — payments, lending, or trading platforms
+  [ ] Healthcare — EMR/EHR systems, HIPAA-aware development
+  [ ] E-commerce — catalog management, order processing, search
+  [ ] Banking — core banking, transaction processing, regulatory reporting
+
+3. Preferred Technical Skills
+
+  [ ] Docker and containerisation
+  [ ] CI/CD pipelines (GitHub Actions, Jenkins, or GitLab CI)
+  [ ] Cloud platforms (AWS preferred; Azure, GCP acceptable)
+  [ ] Message queues (RabbitMQ, Kafka, or Redis Streams)
+  [ ] ORM proficiency (SQLAlchemy, Django ORM)
+  [ ] Async programming (asyncio, aiohttp, or FastAPI async)
+
+4. Soft Skills Assessment
+
+  [ ] Communication — can explain technical decisions clearly
+  [ ] Problem solving — demonstrates structured approach in coding rounds
+  [ ] Collaboration — comfortable in Agile/Scrum environments
+  [ ] Documentation — writes clear README, docstrings and commit messages
+
+5. Interview Stages
+
+  Stage 1: Resume screening (this checklist)
+  Stage 2: Online coding assessment (HackerRank, 60 min, 3 problems)
+  Stage 3: Technical interview (45 min, data structures + system design)
+  Stage 4: HR round (salary discussion, notice period, joining date)
+  Stage 5: Client interview (if applicable)
+
+6. Disqualification Criteria
+
+  - Less than 3 years total Python experience
+  - Unable to write basic SQL joins
+  - No experience with version control
+  - Poor communication in English (written or verbal)
+  - Notice period exceeding 60 days without buyout option

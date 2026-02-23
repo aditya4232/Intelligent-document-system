@@ -103,6 +103,9 @@ Desktop.ini
 *.avi
 *.mkv
 *.webp
+# Allow the two background images used by the frontend
+!Whisk_ewmzcdz3ygm2utyz0injljytq2ykrtl4mtz00cz-ezgif.com-video-to-webp-converter.webp
+!_ai_document_1080p_202602220846-ezgif.com-video-to-webp-converter.webp
 
 # FAISS index (rebuilt at runtime from data/ folder)
 *.faiss

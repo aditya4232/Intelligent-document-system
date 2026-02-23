@@ -1,8 +1,52 @@
-Placement Checklist
+Placement Checklist — Consultant Onboarding
+Version: 2.1 | Updated: February 2026
 
-Before placement collect:
-- Signed Resume
-- Government ID Copy
-- Background Check Report
-- Two references
-- Non-Compete Agreement
+This document lists all steps required before a consultant can be placed at a client site.
+
+1. Documentation (to be collected before Day 1)
+
+  [ ] Signed offer letter (company copy)
+  [ ] Aadhaar card (self-attested copy)
+  [ ] PAN card (self-attested copy)
+  [ ] Passport-size photographs (4 copies)
+  [ ] Educational certificates (10th, 12th, degree, post-graduation)
+  [ ] Previous employer experience letters
+  [ ] Last 3 months salary slips from previous employer
+  [ ] Cancelled cheque / bank passbook for salary account
+  [ ] Emergency contact details form
+  [ ] Signed NDA (non-disclosure agreement)
+
+2. Compliance Clearances
+
+  [ ] Background verification completed and cleared
+  [ ] PF nomination form (Form 2) submitted
+  [ ] ESIC nomination form submitted (if applicable)
+  [ ] Gratuity nomination form submitted
+  [ ] Tax declaration (Form 12BB) submitted
+  [ ] Medical insurance enrolment (self + dependents)
+
+3. IT and Access Setup
+
+  [ ] Corporate email ID created
+  [ ] Laptop issued with approved software image
+  [ ] VPN credentials provisioned
+  [ ] Client project access (JIRA, Confluence, Git repos)
+  [ ] ID badge and access card issued
+  [ ] Time-tracking tool setup (internal + client)
+
+4. Induction and Training
+
+  [ ] Company orientation session attended
+  [ ] Information security awareness training completed
+  [ ] POSH (Prevention of Sexual Harassment) training completed
+  [ ] Client-specific process training (if applicable)
+  [ ] Reporting manager introduction done
+  [ ] Buddy/mentor assigned for first 30 days
+
+5. Post-Placement Follow-up
+
+  Week 1: HR check-in call with the consultant
+  Week 2: Delivery manager feedback collection
+  Month 1: Performance pulse check
+  Month 3: Formal probation review
+  Month 6: Engagement continuation review with client

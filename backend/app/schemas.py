@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List, Literal, Optional
 
 
 class AskRequest(BaseModel):
@@ -16,7 +16,9 @@ class AskRequest(BaseModel):
     rerank_enabled: bool = True
     similarity_threshold: float = Field(default=0.5, ge=0.0, le=1.0)
     max_tokens: int = Field(default=512, ge=64, le=4096)
-    embedding_model: str = "nomic-v1.5"
+
+    # Embedding model — only two supported options
+    embedding_model: Literal["MiniLM-L6", "MPNet-Base"] = "MiniLM-L6"
 
 
 class AskResponse(BaseModel):

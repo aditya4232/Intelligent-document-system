@@ -1,0 +1,61 @@
+Employee Handbook — Leave and Attendance Policy
+Aditya Consulting Services Pvt. Ltd.
+Effective: 1 April 2025 | Revised: 1 January 2026
+
+1. Leave Entitlement (per calendar year)
+
+  Type                    Days    Carry Forward    Encashment
+  ---------------------   ----    -------------    ----------
+  Earned Leave (EL)       18      Up to 10 days    Yes, on separation
+  Casual Leave (CL)       8       No               No
+  Sick Leave (SL)         6       No               No
+  Maternity Leave         26 weeks (as per Maternity Benefit Act)
+  Paternity Leave         5 days
+  Bereavement Leave       3 days (immediate family)
+  Marriage Leave          3 days (one-time, within first year of employment)
+
+2. Leave Application Process
+
+  a) All leave must be applied through the HRMS portal at least 3 working days in advance
+  b) Emergency/sick leave: inform the reporting manager via call/message before 10:00 AM
+  c) Medical certificate required for sick leave exceeding 2 consecutive days
+  d) Earned leave for more than 5 consecutive days requires manager + HR approval
+  e) Leave during notice period is generally not allowed unless pre-approved
+
+3. Attendance and Work Hours
+
+  Standard work hours: 9 hours/day (including 1 hour lunch break)
+  Core hours: 10:00 AM to 5:00 PM
+  Flexible window: 8:30 AM to 10:30 AM (start) / 5:30 PM to 7:30 PM (end)
+  Minimum monthly attendance: 22 working days
+
+4. Work From Home (WFH) Policy
+
+  - Maximum 2 WFH days per week (subject to project requirements)
+  - WFH must be recorded in the attendance system before 10:00 AM
+  - Employees on WFH must be reachable during core hours
+  - New joiners (first 3 months) are expected to work from office full-time
+  - Client-specific WFH restrictions may apply
+
+5. Overtime and Compensatory Off
+
+  - Overtime is applicable only for employees below manager grade
+  - Weekend work requires prior approval from the delivery manager
+  - Compensatory off must be availed within 30 days of the overtime
+  - If not availed within 30 days, it lapses automatically
+
+6. Public Holidays (FY 2025-26)
+
+  Republic Day                26 January
+  Holi                        14 March
+  Ugadi                       30 March
+  Good Friday                 18 April
+  May Day                     1 May
+  Independence Day            15 August
+  Ganesh Chaturthi            27 August
+  Gandhi Jayanti              2 October
+  Dussehra                    2 October
+  Diwali                      20 October
+  Christmas                   25 December
+
+  Note: Regional holidays may vary by office location (Hyderabad, Bangalore, Pune).

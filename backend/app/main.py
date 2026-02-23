@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.ingest import load_documents
 from app.chunking import fixed_chunk
-from app.embeddings import embed_texts
+from app.embeddings import embed_texts, get_dimension, MODELS, DEFAULT_MODEL
 from app.vector_store import VectorStore
 from app.api import create_routes
 
@@ -18,9 +18,10 @@ for doc in docs:
     all_chunks.extend(chunks)
     sources.extend([doc["source"]] * len(chunks))
 
+# Use the default embedding model for the initial index
 embeddings = embed_texts(all_chunks)
 
-dimension = len(embeddings[0])
+dimension = get_dimension()
 vector_store = VectorStore(dimension)
 vector_store.add(embeddings, all_chunks, sources)
 
@@ -53,6 +54,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ── Model info endpoint ───────────────────────────────────────────────────
+@app.get("/models")
+def list_models():
+    return {
+        "models": list(MODELS.keys()),
+        "default": DEFAULT_MODEL,
+    }
 
 # ── Routes ─────────────────────────────────────────────────────────────────
 app.include_router(create_routes(vector_store))

@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   // When deploying to GitHub Pages the repo lives under /<repo-name>/
   // Set VITE_BASE_PATH in the GitHub Actions env or .env.production.
   // For Netlify / custom domain leave it as '/'.
-  const base = env.VITE_BASE_PATH || '/'
+  const base = env.VITE_BASE_PATH || './'
 
   // Dev-only proxy — forwards API calls to the local FastAPI server so
   // no CORS issues during development and no hardcoded host needed.

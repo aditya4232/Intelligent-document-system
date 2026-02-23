@@ -12,7 +12,7 @@ export function useSettings() {
   const [rerankEnabled, setRerankEnabled]             = useState(true)
   const [similarityThreshold, setSimilarityThreshold] = useState(0.5)
   const [maxTokens, setMaxTokens]                     = useState(512)
-  const [embeddingModel, setEmbeddingModel]           = useState('nomic-v1.5')
+  const [embeddingModel, setEmbeddingModel]           = useState('MiniLM-L6')
 
   // useMemo gives a stable reference — sendQuestion's useCallback won't
   // re-memoize unless an actual setting value changes.
@@ -35,4 +35,3 @@ export function useSettings() {
     apiParams,
   }
 }
-

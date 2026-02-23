@@ -1,6 +1,66 @@
-Compliance Policy
+Compliance and Background Verification Policy
+Company: Aditya Consulting Services Pvt. Ltd.
+Effective Date: 1 January 2026
+Version: 3.1
 
-If candidate fails background check:
-1. Notify candidate within 24 hours.
-2. Escalate to management.
-3. Criminal record cases require legal review.
+1. Pre-Employment Background Verification
+
+All candidates must complete background verification before their start date. No exceptions.
+
+1.1 Required Checks
+- Identity verification: Aadhaar, PAN and passport (if applicable)
+- Address verification through third-party agency
+- Educational qualification check (10th, 12th, graduation, post-graduation)
+- Previous employment verification for the last three employers
+- Criminal background check through police verification
+- Credit history check for finance-domain roles only
+
+1.2 Timeline
+- BGV must be initiated within 2 working days of offer acceptance
+- Reports are expected within 10–15 working days
+- Any discrepancy must be escalated to the HR Manager within 24 hours
+
+1.3 Failure Handling
+If a candidate fails the background check:
+  a) Notify the candidate in writing within 24 hours
+  b) Provide a copy of the report upon request
+  c) Allow 7 working days for the candidate to dispute findings
+  d) Escalate to the legal team if criminal records are found
+  e) Revoke the offer letter and notify the client within 48 hours
+
+2. PF and ESIC Compliance
+
+2.1 Provident Fund
+- PF is mandatory for all employees earning basic salary up to INR 15,000/month
+- Employer contribution: 12% of basic + DA
+- Employee contribution: 12% of basic + DA
+- UAN must be generated within 7 days of joining
+
+2.2 ESIC (Employee State Insurance Corporation)
+- Applicable for employees with gross salary up to INR 21,000/month
+- Employer contribution: 3.25%
+- Employee contribution: 0.75%
+- ESI card must be issued within 15 working days
+
+2.3 TDS Compliance
+- TDS to be deducted at source as per applicable tax slab
+- Form 16 to be issued by 15 June each year
+- Quarterly TDS returns (24Q) to be filed on time
+
+3. Work Authorization
+
+3.1 Indian Nationals
+- Aadhaar and PAN are mandatory
+- Voter ID or driving license as supplementary proof
+
+3.2 Foreign Nationals
+- Valid work visa (Employment Visa)
+- FRRO registration within 14 days of arrival
+- Work permit verification with the Ministry of Home Affairs
+
+4. Annual Compliance Calendar
+
+  Q1 (Apr-Jun): PF annual returns, TDS Q4 filing, Form 16 issuance
+  Q2 (Jul-Sep): Half-yearly compliance review, ESIC contribution reconciliation
+  Q3 (Oct-Dec): ESI renewal, mid-year audit
+  Q4 (Jan-Mar): Annual BGV re-verification for critical roles, PF withdrawal settlements

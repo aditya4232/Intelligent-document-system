@@ -1,0 +1,71 @@
+name: Deploy Frontend to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'index.html'
+      - 'package.json'
+      - 'vite.config.js'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:          # allow manual trigger from GitHub UI
+
+# Grant GITHUB_TOKEN write access to deploy to gh-pages branch
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Setup Node ────────────────────────────────────────────────────────
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # ── 3. Install dependencies ───────────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── 4. Build ─────────────────────────────────────────────────────────────
+      # VITE_BASE_PATH  → sets the <base href> for GitHub Pages (/<repo-name>/)
+      # VITE_API_URL    → point to your deployed backend; omit to use the
+      #                   hardcoded fallback (http://127.0.0.1:8000 — dev only)
+      - name: Build production bundle
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        run: npm run build
+
+      # ── 5. Inject 404.html for SPA routing ───────────────────────────────────
+      # GitHub Pages serves 404.html on unknown routes; our 404.html redirects
+      # back to index.html so React Router can handle the path client-side.
+      - name: Copy 404.html for SPA routing
+        run: cp dist/index.html dist/404.html
+
+      # ── 6. Deploy to gh-pages branch ─────────────────────────────────────────
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'chore(deploy): ${{ github.sha }}'

@@ -1,0 +1,63 @@
+Employee Exit and Full & Final Settlement Process
+Aditya Consulting Services Pvt. Ltd.
+Version: 1.3 | Updated: January 2026
+
+1. Resignation Process
+
+  a) Submit resignation through the HRMS portal
+  b) Notice period: 30 days for below-manager grades, 60 days for managers and above
+  c) Notice period buyout: permitted with manager and HR approval; deduction is calculated
+     as (monthly gross salary / 30) x remaining notice days
+  d) Manager to acknowledge resignation within 2 working days
+  e) HR to schedule an exit interview within the last week
+
+2. Handover and Knowledge Transfer
+
+  - Prepare a handover document covering:
+    * Current project status and pending tasks
+    * Access credentials and admin accounts
+    * Documentation and codebase walkthroughs
+    * Key contacts (client and internal)
+  - Knowledge transfer sessions must be completed at least 5 days before the last day
+  - Delivery manager to sign off on handover completion
+
+3. Asset Return Checklist
+
+  [ ] Laptop and charger
+  [ ] ID badge and access cards
+  [ ] Parking pass (if issued)
+  [ ] Client-provided equipment (monitors, peripherals)
+  [ ] Library books or reference materials
+  [ ] Company-issued mobile phone (if applicable)
+
+4. Access Revocation
+
+  - Corporate email: deactivated on the last working day
+  - VPN and remote access: revoked on the last working day
+  - JIRA, Confluence, Git: access removed within 24 hours
+  - Building access: badge deactivated on the last working day
+  - Client systems: access removal confirmation from client IT team
+
+5. Full and Final Settlement
+
+  Components included:
+    + Salary for days worked in the last month
+    + Earned leave encashment
+    + Bonus (pro-rated, if applicable)
+    + Gratuity (for employees with 5+ years of service)
+    + Reimbursements pending
+
+  Deductions:
+    - Notice period shortfall (if notice not fully served)
+    - Outstanding advances or loans
+    - Asset recovery charges (if any asset not returned)
+    - Tax deductions (TDS on final settlement)
+
+  Timeline: Full and final settlement is processed within 45 working days of the last
+  working day, provided all clearances are received.
+
+6. Experience Letter and Relieving Letter
+
+  - Relieving letter: issued on the last working day (subject to clearance)
+  - Experience letter: issued within 7 working days of exit clearance
+  - Both letters are sent to the registered email and available on HRMS
