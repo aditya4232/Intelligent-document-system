@@ -8,7 +8,7 @@ import { useState, useMemo } from 'react'
  */
 export function useSettings() {
   const [guardrailsEnabled, setGuardrailsEnabled]     = useState(true)
-  const [confidenceThreshold, setConfidenceThreshold] = useState(0.6)
+  const [confidenceThreshold, setConfidenceThreshold] = useState(0.4)
   const [rerankEnabled, setRerankEnabled]             = useState(true)
   const [similarityThreshold, setSimilarityThreshold] = useState(0.5)
   const [maxTokens, setMaxTokens]                     = useState(512)
